@@ -17,6 +17,7 @@ public class Juego extends Thread {
     private Reina dat;
     private Practica2AlgAv prog;
     private int puestas;
+    public int g;
 
     public Juego(Reina d, Practica2AlgAv n) {
         dat = d;
