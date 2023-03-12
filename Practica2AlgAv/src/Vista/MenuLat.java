@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vista;
+package vista;
 
-import Model.Caballo;
-import Model.Reina;
+import modelo.piezas.Caballo;
+import modelo.piezas.Reina;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -58,7 +58,7 @@ public class MenuLat extends JPanel {
         Reina reina = new Reina();
         ImageIcon imgReina = new ImageIcon(reina.getImagen());
         Image img2 = imgReina.getImage();
-        Image nuevaImg2 = img2.getScaledInstance(tamPieza + 20, tamPieza, Image.SCALE_SMOOTH);
+        Image nuevaImg2 = img2.getScaledInstance(tamPieza , tamPieza, Image.SCALE_SMOOTH);
         imgReina.setImage(nuevaImg2);
         JLabel labelReina = new JLabel(imgReina);
         labelReina.setBounds(getWidth() / 4, (Margen * 3) + tamPieza, imgCab.getIconWidth(), imgCab.getIconHeight());

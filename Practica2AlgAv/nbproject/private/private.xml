@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/perem/OneDrive/Documentos/GitHub/AlgoAv/Practica2AlgAv/src/practica2algav/Practica2AlgAv.java</file>
-            <file>file:/C:/Users/perem/OneDrive/Documentos/GitHub/AlgoAv/Practica2AlgAv/src/Controlador/Juego.java</file>
-            <file>file:/C:/Users/perem/OneDrive/Documentos/GitHub/AlgoAv/Practica2AlgAv/src/Model/Reina.java</file>
-            <file>file:/C:/Users/perem/OneDrive/Documentos/GitHub/AlgoAv/Practica2AlgAv/src/Vista/Vista.java</file>
+            <file>file:/C:/Users/jfher/OneDrive/Documentos/NetBeansProjects/Practica2AlgAv/src/Vista/Vista.java</file>
+            <file>file:/C:/Users/jfher/OneDrive/Documentos/NetBeansProjects/Practica2AlgAv/src/Vista/MenuLat.java</file>
+            <file>file:/C:/Users/jfher/OneDrive/Documentos/NetBeansProjects/Practica2AlgAv/src/Vista/Tablero.java</file>
+            <file>file:/C:/Users/jfher/OneDrive/Documentos/NetBeansProjects/Practica2AlgAv/src/practica2algav/Practica2AlgAv.java</file>
+            <file>file:/C:/Users/jfher/OneDrive/Documentos/NetBeansProjects/Practica2AlgAv/src/Vista/Casilla.java</file>
         </group>
     </open-files>
 </project-private>
