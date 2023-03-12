@@ -41,10 +41,8 @@ public class Tablero extends JPanel {
                         getHeight() / dim);
                 if ((i + j) % 2 == 0) {
                     c.setBackground(Color.WHITE);
-                    //    c.setNumero(i + j);
                 } else {
                     c.setBackground(Color.BLACK);
-                    //    c.setNumero(i + j);
                 }
                 casillas[i][j] = c;
                 add(c);
