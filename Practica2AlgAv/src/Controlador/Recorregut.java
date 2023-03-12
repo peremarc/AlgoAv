@@ -35,10 +35,13 @@ public class Recorregut extends Thread implements PerEsdeveniments {
         obtenerPiezas(t);
 
         //La primera pieza colocada es la que iniciará el movimiento y se marca como casilla cero
-        inicio = new Point();
-        inicio.x = itineraris.get(0).get(0).x;
-        inicio.y = itineraris.get(0).get(0).y;
-        t.getCasillas()[inicio.x][inicio.y].setNumero(0);
+        for (int i = 0; i < piezas.size(); i++) {
+            inicio = new Point();
+            inicio.x = itineraris.get(i).get(0).x;
+            inicio.y = itineraris.get(i).get(0).y;
+            t.getCasillas()[inicio.x][inicio.y].setNumero(i);
+        }
+
     }
 
     private void obtenerPiezas(Tablero t) {
@@ -79,10 +82,10 @@ public class Recorregut extends Thread implements PerEsdeveniments {
                 pAux = itineraris.get(piezas.indexOf(p)).get(size - 1);
                 int x1 = pAux.x + p.getMovX(i);
                 int y1 = pAux.y + p.getMovY(i);
-                Point pAux2 = new Point(x1,y1);
+                Point pAux2 = new Point(x1, y1);
                 if (t.isValid(x1, y1)) {
                     itineraris.get(piezas.indexOf(p)).add(pAux2);
-                    t.getCasillas()[x1][y1].setNumero(k + 1);
+                    t.getCasillas()[x1][y1].setNumero(k + piezas.size());
                     t.getCasillas()[x1][y1].pintarPieza(p);
                     if (recorregut(t, piezas.get((k + 1) % piezas.size()), k + 1)) {
                         return true;

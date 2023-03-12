@@ -18,7 +18,7 @@ import javax.swing.border.LineBorder;
 public class Tablero extends JPanel {
 
     private final Vista vista;
-    private int dim = 5;
+    private int dim = 8;
     private Casilla[][] casillas;
 
     public Tablero(Vista v) {
