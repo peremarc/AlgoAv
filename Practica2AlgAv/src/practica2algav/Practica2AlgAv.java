@@ -14,7 +14,7 @@ import vista.Vista;
  */
 public class Practica2AlgAv implements PerEsdeveniments{
     
-//    private Model mod;    // Punter al Model del patró
+//    private Model mod;    // Punter al Model del patró.
     private Vista vis;    // Punter a la Vista del patró
     private Recorregut con;  // punter al Control del patró
 
