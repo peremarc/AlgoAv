@@ -23,8 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import modelo.Tablero;
-import modelo.piezas.Rey;
-import modelo.piezas.Torre;
+import modelo.piezas.*;
 import practica2algav.Practica2AlgAv;
 
 /**
@@ -109,6 +108,38 @@ public class MenuLat extends JPanel implements ActionListener {
             }
         });
         add(labelRey);
+        
+        Alfil alfil = new Alfil();
+        ImageIcon imgAlfil = new ImageIcon(alfil.getImagen());
+        Image img5 = imgAlfil.getImage();
+        Image nuevaImg5 = img5.getScaledInstance(tamPieza, tamPieza, Image.SCALE_SMOOTH);
+        imgAlfil.setImage(nuevaImg5);
+        JLabel labelAlfil = new JLabel(imgAlfil);
+        labelAlfil.setBounds(getWidth() / 4, (Margen * 9) + (4 * tamPieza),
+                imgCab.getIconWidth(), imgCab.getIconHeight());
+        labelAlfil.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                vista.piezaSelec = "alfil";
+            }
+        });
+        add(labelAlfil);
+        
+        Drac drac = new Drac();
+        ImageIcon imgDrac = new ImageIcon(drac.getImagen());
+        Image img6 = imgDrac.getImage();
+        Image nuevaImg6 = img6.getScaledInstance(tamPieza, tamPieza, Image.SCALE_SMOOTH);
+        imgDrac.setImage(nuevaImg6);
+        JLabel labelDrac = new JLabel(imgDrac);
+        labelDrac.setBounds(getWidth() / 4, (Margen * 11) + (5 * tamPieza),
+                imgCab.getIconWidth(), imgCab.getIconHeight());
+        labelDrac.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                vista.piezaSelec = "drac";
+            }
+        });
+        add(labelDrac);
     }
 
     public void initB() {

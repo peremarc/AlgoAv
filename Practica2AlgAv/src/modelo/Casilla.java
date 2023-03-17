@@ -18,11 +18,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import modelo.piezas.Caballo;
 import modelo.piezas.Pieza;
-import modelo.piezas.Reina;
-import modelo.piezas.Rey;
-import modelo.piezas.Torre;
+import modelo.piezas.*;
 
 /**
  *
@@ -82,6 +79,14 @@ public class Casilla extends JPanel {
                 break;
             case "rey":
                 pieza = new Rey();
+                pintarPieza(pieza);
+                break;
+            case "alfil":
+                pieza = new Alfil(vista.getTab().getDimension());
+                pintarPieza(pieza);
+                break;
+            case "drac":
+                pieza = new Drac();
                 pintarPieza(pieza);
                 break;
             default:
