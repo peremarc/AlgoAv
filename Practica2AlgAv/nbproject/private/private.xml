@@ -3,13 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jfher/OneDrive/Escritorio/UIB%2022-23%20(2%20SEMESTRE)/Algorismes%20Avançats/Practicas/Practica2AlgAv/Practica2AlgAv/src/modelo/piezas/Pieza.java</file>
-            <file>file:/C:/Users/jfher/OneDrive/Escritorio/UIB%2022-23%20(2%20SEMESTRE)/Algorismes%20Avançats/Practicas/Practica2AlgAv/Practica2AlgAv/src/practica2algav/Practica2AlgAv.java</file>
-            <file>file:/C:/Users/jfher/OneDrive/Escritorio/UIB%2022-23%20(2%20SEMESTRE)/Algorismes%20Avançats/Practicas/Practica2AlgAv/Practica2AlgAv/src/controlador/Recorregut.java</file>
-            <file>file:/C:/Users/jfher/OneDrive/Escritorio/UIB%2022-23%20(2%20SEMESTRE)/Algorismes%20Avançats/Practicas/Practica2AlgAv/Practica2AlgAv/src/modelo/Casilla.java</file>
-            <file>file:/C:/Users/jfher/OneDrive/Escritorio/UIB%2022-23%20(2%20SEMESTRE)/Algorismes%20Avançats/Practicas/Practica2AlgAv/Practica2AlgAv/src/modelo/Tablero.java</file>
-            <file>file:/C:/Users/jfher/OneDrive/Escritorio/UIB%2022-23%20(2%20SEMESTRE)/Algorismes%20Avançats/Practicas/Practica2AlgAv/Practica2AlgAv/src/vista/Vista.java</file>
-            <file>file:/C:/Users/jfher/OneDrive/Escritorio/UIB%2022-23%20(2%20SEMESTRE)/Algorismes%20Avançats/Practicas/Practica2AlgAv/Practica2AlgAv/src/modelo/piezas/Caballo.java</file>
+            <file>file:/C:/Users/perem/OneDrive/Documentos/GitHub/AlgoAv/Practica2AlgAv/src/practica2algav/Practica2AlgAv.java</file>
+            <file>file:/C:/Users/perem/OneDrive/Documentos/GitHub/AlgoAv/Practica2AlgAv/src/vista/Vista.java</file>
+            <file>file:/C:/Users/perem/OneDrive/Documentos/GitHub/AlgoAv/Practica2AlgAv/src/modelo/Casilla.java</file>
+            <file>file:/C:/Users/perem/OneDrive/Documentos/GitHub/AlgoAv/Practica2AlgAv/src/controlador/Recorregut.java</file>
+            <file>file:/C:/Users/perem/OneDrive/Documentos/GitHub/AlgoAv/Practica2AlgAv/src/modelo/piezas/Reina.java</file>
+            <file>file:/C:/Users/perem/OneDrive/Documentos/GitHub/AlgoAv/Practica2AlgAv/src/modelo/piezas/Pieza.java</file>
+            <file>file:/C:/Users/perem/OneDrive/Documentos/GitHub/AlgoAv/Practica2AlgAv/src/modelo/Tablero.java</file>
         </group>
     </open-files>
 </project-private>
