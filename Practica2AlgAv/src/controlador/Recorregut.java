@@ -91,7 +91,7 @@ public class Recorregut extends Thread implements PerEsdeveniments {
                 int x1 = pAux.x + p.getMovX(i);
                 int y1 = pAux.y + p.getMovY(i);
                 Point pAux2 = new Point(x1, y1);
-                if (t.isValid(x1, y1)) {
+                if (isValid(t, p, pAux, pAux2)) {
                     itineraris.get(piezas.indexOf(p)).add(pAux2);
                     t.getCasillas()[x1][y1].setNumero(k + piezas.size(), p.getColor());
                     t.getCasillas()[x1][y1].pintarPieza(p);
@@ -104,35 +104,6 @@ public class Recorregut extends Thread implements PerEsdeveniments {
             }
             return false;
         }
-    }
-
-    private boolean recorregutRecursiu1(Tablero m, Pieza p, int k) {
-        int max = m.getDimension() * m.getDimension() - piezas.size();
-
-        for (int i = 0; i < p.numMov(); i++) {
-            int size = itineraris.get(piezas.indexOf(p)).size();
-            Point pAux = itineraris.get(piezas.indexOf(p)).get(size - 1);
-            int x1 = pAux.x + p.getMovX(i);
-            int y1 = pAux.y + p.getMovY(i);
-            Point pAux2 = new Point(x1, y1);
-
-            if (m.isValid(pAux2.x, pAux2.y) && k == max - 1) {
-                itineraris.get(piezas.indexOf(p)).add(pAux2);
-                t.getCasillas()[x1][y1].setNumero(k + piezas.size(), p.getColor());
-                t.getCasillas()[x1][y1].pintarPieza(p);
-                return true;
-            } else if (m.isValid(pAux2.x, pAux2.y) && k < max - 1) {
-                itineraris.get(piezas.indexOf(p)).add(pAux2);
-                t.getCasillas()[x1][y1].setNumero(k + piezas.size(), p.getColor());
-                t.getCasillas()[x1][y1].pintarPieza(p);
-                if (recorregutRecursiu1(m, piezas.get((k + 1) % piezas.size()), k + 1)) {
-                    return true;
-                }
-                itineraris.get(piezas.indexOf(p)).remove(size);
-                t.getCasillas()[x1][y1].borrar();
-            }
-        }
-        return false;
     }
 
     private boolean recorregutIteratiu(Tablero m, ArrayList<Pieza> piezas, ArrayList<ArrayList<Point>> itineraris) {
@@ -158,12 +129,13 @@ public class Recorregut extends Thread implements PerEsdeveniments {
                 int x1 = pAux.x + p.getMovX(t[k]);
                 int y1 = pAux.y + p.getMovY(t[k]);
                 Point pAux2 = new Point(x1, y1);
-                if (m.isValid(pAux2.x, pAux2.y) && (k == t.length - 1)) { //solució
+                if (isValid(m, p,pAux,pAux2) && (k == t.length - 1)) { //solució
+             // if (m.isValid(pAux2.x, pAux2.y) && (k == t.length - 1)) {
                     itineraris.get(torn).add(pAux2);
                     m.getCasillas()[x1][y1].setNumero(k + piezas.size(), p.getColor());
                     m.getCasillas()[x1][y1].pintarPieza(p);
                     return true;
-                } else if (m.isValid(pAux2.x, pAux2.y) && (k < t.length - 1)) { //possibilitat solució
+                } else if (isValid(m, p,pAux,pAux2) && (k < t.length - 1)) { //possibilitat solució
                     itineraris.get(torn).add(pAux2);
                     m.getCasillas()[x1][y1].setNumero(k + piezas.size(), p.getColor());
                     m.getCasillas()[x1][y1].pintarPieza(p);
@@ -202,10 +174,63 @@ public class Recorregut extends Thread implements PerEsdeveniments {
     @Override
     public void notificar(String s) {
         if (s.startsWith("Parar")) {
-           // seguir = false;
-        } else if (s.startsWith("start-recursivo")) {
-            this.start();
+            // seguir = false;
         }
+    }
+
+    public boolean isValid(Tablero t, Pieza p, Point posI, Point posF) {
+        if ((posF.x < 0) || (posF.x >= t.getDimension()) || (posF.y < 0) || (posF.y >= t.getDimension())) {
+            return false;
+        }
+        if (t.getCasillas()[posF.x][posF.y].isOcupada()) {
+            return false;
+        }
+        if (p.afectaDimension()) {
+            if (posI.x > posF.x) {
+                int max = posI.x - posF.x;
+                if(posI.y>posF.y){
+                    for (int i = 1; i < max; i++) {
+                        if(t.getCasillas()[posI.x-i][posI.y-i].isOcupada()) return false;
+                    }
+                } else if(posI.y==posF.y){
+                    for (int i = 1; i < max; i++) {
+                        if(t.getCasillas()[posI.x-i][posI.y].isOcupada()) return false;
+                    }
+                } else{//posI.y<posF.y
+                    for (int i = 1; i < max; i++) {
+                        if(t.getCasillas()[posI.x-i][posI.y+i].isOcupada()) return false;
+                    }
+                }
+            } else if(posI.x == posF.x){
+                if(posI.y>posF.y){
+                    int max = posI.y - posF.y;
+                    for (int i = 1; i < max; i++) {
+                        if(t.getCasillas()[posI.x][posI.y-i].isOcupada()) return false;
+                    }
+                } else{///posI.y<posF.y
+                    int max = posF.y - posI.y;
+                    for (int i = 1; i < max; i++) {
+                        if(t.getCasillas()[posI.x][posI.y+i].isOcupada()) return false;
+                    }
+                }
+            } else{//posI.x < posF.x
+                int max = posF.x - posI.x;
+                if(posI.y>posF.y){
+                    for (int i = 1; i < max; i++) {
+                        if(t.getCasillas()[posI.x+i][posI.y-i].isOcupada()) return false;
+                    }
+                } else if(posI.y==posF.y){
+                    for (int i = 1; i < max; i++) {
+                        if(t.getCasillas()[posI.x+i][posI.y].isOcupada()) return false;
+                    }
+                } else{//posI.y<posF.y
+                    for (int i = 1; i < max; i++) {
+                        if(t.getCasillas()[posI.x+i][posI.y+i].isOcupada()) return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 
 }

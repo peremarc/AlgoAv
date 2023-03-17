@@ -53,16 +53,6 @@ public class Tablero extends JPanel {
         }
     }
 
-    public boolean isValid(int col, int row) {
-        if ((col < 0) || (col >= dim) || (row < 0) || (row >= dim)) {
-            return false;
-        }
-        if (getCasillas()[col][row].isOcupada()) {
-            return false;
-        }
-        return true;
-    }
-
     public Casilla[][] getCasillas() {
         return casillas;
     }
