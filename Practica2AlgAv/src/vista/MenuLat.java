@@ -112,17 +112,25 @@ public class MenuLat extends JPanel implements ActionListener {
     }
 
     public void initB() {
-        JButton start = new JButton("START");
-        start.setBounds(10, 20, getWidth() - 20, getHeight() / 8);
-        start.setBackground(Color.BLACK);
-        start.setForeground(Color.WHITE);
-        start.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        start.addActionListener(this);
-        add(start);
+        JButton recu = new JButton("RECURSIVO");
+        recu.setBounds(10, 20, getWidth() - 20, getHeight() / 8);
+        recu.setBackground(Color.BLACK);
+        recu.setForeground(Color.WHITE);
+        recu.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        recu.addActionListener(this);
+        add(recu);
+        
+        JButton iter = new JButton("ITERATIVO");
+        iter.setBounds(10, 40 + getHeight() / 8, getWidth() - 20, getHeight() / 8);
+        iter.setBackground(Color.BLACK);
+        iter.setForeground(Color.WHITE);
+        iter.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        iter.addActionListener(this);
+        add(iter);
 
         JTextField textField = new JTextField("Tamaño del tablero");
         textField.setForeground(Color.GRAY);
-        textField.setBounds(10, 40 + getHeight() / 8, getWidth() - 20, getHeight() / 16);
+        textField.setBounds(10, 2*(40 + getHeight() / 8), getWidth() - 20, getHeight() / 16);
         textField.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.BLACK),
                 BorderFactory.createEmptyBorder(0, 5, 0, 5)
@@ -147,7 +155,7 @@ public class MenuLat extends JPanel implements ActionListener {
         add(textField);
 
         JButton changeButton = new JButton("✔");
-        changeButton.setBounds(getWidth() / 2 + 14, 8 + getHeight() / 4, getWidth() / 3, getHeight() / 18);
+        changeButton.setBounds(getWidth() / 2 + 14, (40 + getHeight() / 8) + getHeight() / 4, getWidth() / 3, getHeight() / 18);
         changeButton.setBackground(Color.BLACK);
         changeButton.setForeground(Color.WHITE);
         changeButton.setBorder(BorderFactory.createLineBorder(Color.WHITE));
@@ -170,8 +178,10 @@ public class MenuLat extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getActionCommand().equals("START")) {
-            vista.getProg().notificar("proceso-start");
+        if (ae.getActionCommand().equals("RECURSIVO")) {
+            vista.getProg().notificar("start-recursivo");
+        } else if(ae.getActionCommand().equals("ITERATIVO")) {
+            vista.getProg().notificar("start-iterativo");
         }
     }
 }

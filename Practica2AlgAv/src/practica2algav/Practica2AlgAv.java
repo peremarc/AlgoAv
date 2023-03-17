@@ -43,10 +43,10 @@ public class Practica2AlgAv implements PerEsdeveniments{
      */
     @Override
     public void notificar(String s) {
-        if (s.startsWith("proceso-start")) {
+        if (s.startsWith("start-")) {
             if (con == null) {
-                con = new Recorregut(this);
-                con.notificar(s);
+                con = new Recorregut(this, s);
+                con.start();
             }
         } 
 //        else if (s.startsWith("Parar")) {

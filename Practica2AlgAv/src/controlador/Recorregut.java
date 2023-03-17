@@ -22,15 +22,16 @@ import practica2algav.*;
 public class Recorregut extends Thread implements PerEsdeveniments {
 
     private Practica2AlgAv prog;
-    private boolean seguir;
+    private String tipo;
 
     private ArrayList<Pieza> piezas;
     private ArrayList<ArrayList<Point>> itineraris;
     private Tablero t;
     private Point inicio;
 
-    public Recorregut(Practica2AlgAv p) {
+    public Recorregut(Practica2AlgAv p, String tipo) {
         prog = p;
+        this.tipo = tipo;
         t = prog.getVis().getTab();
         piezas = new ArrayList();
         itineraris = new ArrayList<>();
@@ -65,16 +66,18 @@ public class Recorregut extends Thread implements PerEsdeveniments {
 
     @Override
     public void run() {
-        seguir = true;
-//        while (seguir) {
-//        if (recorregutRecursiu(t, piezas.get(0), 0)) {
-//        if (recorregutRecursiu1(t, piezas.get(0), 0)) {
-        if (recorregutIteratiu(t, piezas, itineraris)) {
+        boolean solucionat = false;
+        if (tipo.contentEquals("start-recursivo")) {
+            solucionat = recorregutRecursiu(t, piezas.get(0), 0);
+        } else if (tipo.contentEquals("start-iterativo")) {
+            solucionat = recorregutIteratiu(t, piezas, itineraris);
+        }
+
+        if (solucionat) {
             System.out.println("S'ha trobat solució");
         } else {
             System.out.println("No hi ha solució");
         }
-//        }
     }
 
     private boolean recorregutRecursiu(Tablero t, Pieza p, int k) {
@@ -199,8 +202,8 @@ public class Recorregut extends Thread implements PerEsdeveniments {
     @Override
     public void notificar(String s) {
         if (s.startsWith("Parar")) {
-            seguir = false;
-        } else if (s.startsWith("proceso-start")) {
+           // seguir = false;
+        } else if (s.startsWith("start-recursivo")) {
             this.start();
         }
     }
