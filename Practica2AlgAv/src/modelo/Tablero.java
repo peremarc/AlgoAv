@@ -17,12 +17,13 @@ import javax.swing.border.LineBorder;
  */
 public class Tablero extends JPanel {
 
-    private final Vista vista;//test
-    private int dim = 5;
+    private final Vista vista;
+    private int dim;
     private Casilla[][] casillas;
 
-    public Tablero(Vista v) {
+    public Tablero(Vista v, int d) {
         vista = v;
+        dim = d;
         casillas = new Casilla[dim][dim];
         setBounds(vista.getMargenLat() + 10, 10,
                 vista.getWidth() - (2 * vista.getMargenLat() + 20), vista.getHeight() - 50);
@@ -38,9 +39,9 @@ public class Tablero extends JPanel {
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
                 Casilla c = new Casilla(vista);
-                c.setBounds(j * (getWidth() / dim) + 2, i * (getHeight() / dim) + 3, getWidth() / dim,
+                c.setBounds(j * (getWidth() / dim) + 2, i * (getHeight() / dim) + 2, getWidth() / dim,
                         getHeight() / dim);
-                c.setTamPieza(getWidth() / (dim*2));
+                c.setTamPieza(getWidth() / (dim * 2));
                 if ((i + j) % 2 == 0) {
                     c.setBackground(Color.WHITE);
                 } else {
@@ -68,6 +69,10 @@ public class Tablero extends JPanel {
 
     public int getDimension() {
         return dim;
+    }
+    
+    public void setDimension(int d){
+        dim = d;
     }
 
 }
