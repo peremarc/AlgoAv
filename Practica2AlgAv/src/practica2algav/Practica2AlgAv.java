@@ -14,7 +14,7 @@ import vista.Vista;
  */
 public class Practica2AlgAv implements PerEsdeveniments{
     
-//    private Model mod;    // Punter al Model del patró.
+//    private Model mod;    // Punter al Model del patró
     private Vista vis;    // Punter a la Vista del patró
     private Recorregut con;  // punter al Control del patró
 
@@ -24,8 +24,12 @@ public class Practica2AlgAv implements PerEsdeveniments{
     private void inicio() {
 //        mod = new Model(this);
         con = null;
-        vis = new Vista(600, 800, this);
+        vis = new Vista(600, 800, this, 8);
 //        vis.mostrar();
+    }
+    
+    public void resetCon(){
+        con = null;
     }
     /**
      * @param args the command line arguments
@@ -63,6 +67,10 @@ public class Practica2AlgAv implements PerEsdeveniments{
 
     public Vista getVis() {
         return vis;
+    }
+    
+    public void setVista(Vista v){
+        vis = v;
     }
     
     
