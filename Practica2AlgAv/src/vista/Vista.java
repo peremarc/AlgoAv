@@ -5,25 +5,17 @@
  */
 package vista;
 
-import java.awt.BorderLayout;
 import modelo.Tablero;
-import modelo.piezas.Pieza;
-import java.awt.Menu;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JToolBar;
 import practica2algav.Practica2AlgAv;
 
 /**
  *
  * @author jfher
  */
-public class Vista extends JFrame implements ActionListener{
+public class Vista extends JFrame {
 
     private final int h;
     private final int w;
@@ -31,15 +23,13 @@ public class Vista extends JFrame implements ActionListener{
     private final int margenLat = 160;
     private Tablero tab;
     public String piezaSelec;
-    
-    private JPanel contenedor;
-    private JToolBar barra;
-    private JButton StartB;
+    private int dimensionT;
 
-    public Vista(int height, int width, Practica2AlgAv p) {
+    public Vista(int height, int width, Practica2AlgAv p, int d) {
         h = height;
         w = width;
         prog = p;
+        dimensionT = d;
         setSize(w + margenLat, height);
         /*Configura el cierre de la ventana al presionar la x*/
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,27 +49,18 @@ public class Vista extends JFrame implements ActionListener{
     }
 
     private void initC() {
-        Tablero t = new Tablero(this);
+        Tablero t = new Tablero(this, dimensionT);
         tab = t;
         add(t);
-        
-        contenedor = new JPanel();
-        contenedor.setSize(margenLat - 20, getTab().getHeight());
-        contenedor.setLayout(new BorderLayout());
-        barra = new JToolBar();
-        StartB = new JButton("START");
-        StartB.addActionListener(this);
-        barra.add(StartB);
-        contenedor.add(BorderLayout.PAGE_START, barra);
-        contenedor.setLocation(this.getWidth()-(margenLat), 10);
-        add(contenedor);
-        
+
         MenuLat mIz = new MenuLat(this);
         mIz.setLocation(10, 10);
-        mIz.initC();
-        
+        mIz.initP();
+
         MenuLat mDe = new MenuLat(this);
-        mDe.setLocation(this.getWidth()-(margenLat), 10);
+        mDe.setLocation(this.getWidth() - (margenLat), 10);
+        mDe.initB();
+
         add(mDe);
         add(mIz);
     }
@@ -92,11 +73,8 @@ public class Vista extends JFrame implements ActionListener{
         return tab;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == StartB) {
-            prog.notificar("proceso-start");
-        }
+    public Practica2AlgAv getProg() {
+        return prog;
     }
 
 }
